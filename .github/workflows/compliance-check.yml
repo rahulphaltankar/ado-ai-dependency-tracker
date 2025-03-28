@@ -1,0 +1,17 @@
+name: Compliance Check  
+on: [push, pull_request]  
+
+jobs:  
+  audit:  
+    runs-on: ubuntu-latest  
+    steps:  
+      - name: Checkout  
+        uses: actions/checkout@v3  
+
+      - name: Validate Schema  
+        run: npx ajv validate -s schemas/ai-dependency.schema.json -d src/extension.ts  
+
+      - name: Lint Code  
+        run: |  
+          npm install -g typescript  
+          tsc --noEmit src/extension.ts  
