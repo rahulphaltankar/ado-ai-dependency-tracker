@@ -1,0 +1,16 @@
+{  
+  "$schema": "http://json-schema.org/draft-07/schema#",  
+  "title": "AI Dependency Schema",  
+  "type": "object",  
+  "properties": {  
+    "dependencyType": {  
+      "type": "string",  
+      "enum": ["AI-Legal", "AI-Infra", "AI-Data"]  
+    },  
+    "owner": { "type": "string" },  
+    "acceptanceCriteria": { "type": "string" },  
+    "risks": { "type": "array", "items": { "type": "string" } },  
+    "adoWorkItemLink": { "type": "string", "format": "uri" }  
+  },  
+  "required": ["dependencyType", "owner", "acceptanceCriteria"]  
+}  
